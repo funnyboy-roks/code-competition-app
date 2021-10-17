@@ -55,9 +55,7 @@
 ## Implementations
 
 - [ ] Client
-  - [ ] Submit Code
-  - [ ] Scoreboard
   - [ ] Timer
-  - [ ] ...
+  - [ ] Code Submission Alert
 - [ ] Server
   - [ ] Sub

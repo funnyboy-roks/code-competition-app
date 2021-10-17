@@ -118,3 +118,8 @@ dist
 .pnp.*
 
 server/**/*.js
+
+# Java stuff
+**/*.java
+**/*.class
+**/out
