@@ -2,9 +2,12 @@ import express from 'express';
 import morgan from 'morgan';
 import { Server } from 'socket.io';
 import chalk from 'chalk';
+import session from 'express-session';
+import { randomBytes } from 'crypto';
 
 import Client from './client';
 import api from './api';
+import * as data from './data/dataHandler';
 
 const { log } = console;
 
@@ -13,7 +16,20 @@ const http = require('http').Server(app);
 const io: Server = require('socket.io')(http);
 require('dotenv').config();
 
+console.dir(data.json);
+
 const port = process.env.PORT || 3000;
+
+app.set('trust proxy', 1); // trust first proxy
+
+const sessionOptions = {
+  cookie: { secure: true },
+  secret: randomBytes(40).toString('hex'),
+  resave: false,
+  saveUninitialized: true,
+};
+
+app.use(session(sessionOptions));
 
 app.use(morgan('dev'));
 
