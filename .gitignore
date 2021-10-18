@@ -120,6 +120,9 @@ dist
 server/**/*.js
 
 # Java stuff
-**/*.java
 **/*.class
+**/*.jar
 **/out
+
+# Data
+data/

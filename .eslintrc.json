@@ -20,5 +20,13 @@
 				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 			}
 		}
-	}
+	},
+	"overrides": [
+		{
+			"files": ["client/**/*.js"],
+			"rules": {
+				"no-undef": "off"
+			}
+		}
+	]
 }

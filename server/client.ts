@@ -1,7 +1,8 @@
 import { Socket } from 'socket.io';
 
-const events = {
-  log: (data: any[]) => {
+// eslint-disable-next-line no-unused-vars
+const events: { [id: string]: (...data: any[]) => void } = {
+  log: (...data) => {
     console.log(data.map((s) => `${s}`).join(' '));
   },
 };
@@ -13,8 +14,6 @@ export default class Client {
     Object.entries(events).forEach(([event, callback]) => {
       sock.on(event, callback);
     });
-
-    sock.on('123', console.log);
   }
 
   constructor(socket: Socket) {

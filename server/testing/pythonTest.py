@@ -1,10 +1,12 @@
-line = input()
+lines = int(input())
 
-lines = line.split()
+for i in range(lines):
+    line = input()
+    print(line[::-1])
 
-out = "";
+# out = "";
 
-for l in lines:
-    out += l[::-1] + " "
+# for l in lines:
+#     out += l[::-1] + " "
 
-print(out.strip())
+# print(out.strip())

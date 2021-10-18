@@ -4,6 +4,7 @@ import { Server } from 'socket.io';
 import chalk from 'chalk';
 
 import Client from './client';
+import api from './api';
 
 const { log } = console;
 
@@ -16,9 +17,7 @@ const port = process.env.PORT || 3000;
 
 app.use(morgan('dev'));
 
-app.get('/api/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(api);
 
 app.use(express.static('client'));
 

@@ -7,8 +7,9 @@
   - [ ] Alert if code is success/fail
 - [ ] Code Tester
   - [ ] Languages
-    - [ ] Python
+    - [x] Python
     - [ ] Java
+  - [ ] Make testing safe (Not going to fuck up the system)
   - [ ] Confirm if output is correct
   - [ ] Client test case (Before submission)
 - [ ] Scoreboard
@@ -31,8 +32,11 @@
     - [ ] Test cases
       - [ ] Input textarea
       - [ ] Output textarea
+        - [ ] Options for output checking
+          - [ ] Case sensitive - toggle
+          - [ ] Trim whitespace - toggle
       - [ ] Unlimited* amount
-    - [ ] Test test case - Used for testing the program
+    - [ ] Test test case - Used for competitor to test their program
       - [ ] Input textarea
       - [ ] Output textarea
       - [ ] Single one
