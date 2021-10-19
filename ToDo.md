@@ -36,6 +36,7 @@
           - [ ] Case sensitive - toggle
           - [ ] Trim whitespace - toggle
       - [ ] Unlimited* amount
+      - [ ] Option to shuffle them or show them in order
     - [ ] Test test case - Used for competitor to test their program
       - [ ] Input textarea
       - [ ] Output textarea
