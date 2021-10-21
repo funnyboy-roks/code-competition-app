@@ -125,4 +125,4 @@ server/**/*.js
 **/out
 
 # Data
-data/
+*.json
