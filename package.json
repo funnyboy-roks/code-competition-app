@@ -1,0 +1,41 @@
+{
+	"name": "code-competition-app",
+	"version": "0.0.1",
+	"main": "app.ts",
+	"scripts": {
+		"start": "tsc && node app.js",
+		"dev": "nodemon app.ts -i data/"
+	},
+	"license": "Apache-2.0",
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"connect-flash": "^0.1.1",
+		"crypto": "^1.0.1",
+		"dotenv": "^10.0.0",
+		"ejs": "^2.6.1",
+		"express": "^4.16.1",
+		"express-ejs-layouts": "^2.5.1",
+		"express-session": "^1.17.2",
+		"morgan": "^1.9.1",
+		"octo-db": "^1.0.0",
+		"passport": "^0.5.0",
+		"passport-local": "^1.0.0",
+		"typescript": "^4.4.4"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.13",
+		"@types/express-ejs-layouts": "^2.5.0",
+		"@types/express-session": "^1.17.4",
+		"@types/http-errors": "^1.8.1",
+		"@types/morgan": "^1.9.3",
+		"@types/passport": "^1.0.7",
+		"@types/passport-local": "^1.0.34",
+		"@typescript-eslint/eslint-plugin": "^5.1.0",
+		"@typescript-eslint/parser": "^5.1.0",
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-prettier": "^4.0.0",
+		"nodemon": "^2.0.14"
+	}
+}

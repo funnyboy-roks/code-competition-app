@@ -1,0 +1,13 @@
+import express from 'express';
+
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.render('index', { title: 'Express', req });
+});
+
+router.get('/login', (req, res) => {
+  res.render('login', { title: 'Login', req });
+});
+
+module.exports = router;
