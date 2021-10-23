@@ -1,0 +1,65 @@
+<% if (data.configuration.name !=='') { %>
+    <!-- Configuration has been created -->
+    <h1>Competition</h1>
+    <hr>
+    <% if (req.query.mode==='edit' ) { %>
+        <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+                <h1 class="mb-3">Edit Configuration</h1>
+                <form action="/admin/update-config" method="post">
+                    <fieldset>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Name</span>
+                            <input name="name" type="text" class="form-control" value="<%= data.configuration.name %>">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Description</span>
+                            <textarea name="description" type="text" class="form-control"><%= data.configuration.description %></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <% } else { %>
+
+            <div class="mx-4 px-3" style="border-left: 3px solid lightgrey;">
+                <h1>
+                    <%= data.configuration.name %>
+                </h1>
+                <p class="mb-0">
+                    <%- marked(data.configuration.description) %>
+                </p>
+            </div>
+            <a href="/admin?mode=edit" class="btn btn-light"><i class="fas fa-pencil-alt"></i> Edit</a>
+            <% } %>
+
+                <% } else { %>
+                    <!-- Configuration not created -->
+                    <h1>No Contest Created!</h1>
+                    <div class="w-50">
+                        <form action="/admin/create-competition" method="post">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="name" class="form-label mt-4">Competition Name</label>
+                                    <input type="text" name="name" class="form-control" id="name">
+                                    <small id="nameHelp" class="form-text text-muted">Competition Name - Can be changed
+                                        later</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="form-label mt-4">Competition Description</label>
+                                    <textarea name="description" class="form-control" id="description"
+                                        rows="3"></textarea>
+                                    <small id="descriptionHelp" class="form-text text-muted">Competition Description -
+                                        Supports
+                                        Markdown - Can be changed later</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-4">Create</button>
+                            </fieldset>
+                        </form>
+
+                    </div>
+                    <% } %>
+
+                        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

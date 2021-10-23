@@ -1,13 +1,10 @@
 import express from 'express';
+import { data } from '../data-handler';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Express', req });
-});
-
-router.get('/login', (req, res) => {
-  res.render('login', { title: 'Login', req });
+  res.render('index', { title: 'Home', req, data });
 });
 
 module.exports = router;

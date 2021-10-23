@@ -1,4 +1,5 @@
 import express from 'express';
+import User from './classes/User';
 
 export const ensureAuthenticated = (
   req: express.Request,
@@ -8,7 +9,17 @@ export const ensureAuthenticated = (
   if (req.isAuthenticated()) {
     return next();
   }
-  return res.redirect('/login');
+  const dest = encodeURI(req.originalUrl);
+  return res.redirect(`/login?dest=${dest}`);
 };
 
-export default {};
+export const ensureAdmin = (
+  req: express.Request,
+  res: express.Response,
+  next: Function,
+) => {
+  if (req.isAuthenticated() && (req.user as User).admin) {
+    return next();
+  }
+  return res.redirect('/');
+};

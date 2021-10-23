@@ -2,20 +2,35 @@ import User from './User';
 import ContestConfiguration from './ContestConfiguration';
 
 export default class AppData {
-    users: User[];
+  static from(json: any): AppData {
+    const appData = Object.assign(new AppData(), json);
+    appData.users = json.users.map((user: any) => User.from(user));
+    appData.configuration = ContestConfiguration.from(json.configuration);
+    return appData;
+  }
 
-    configuration: ContestConfiguration | null;
+  users: User[];
 
-    constructor() {
-      this.users = [];
-      this.configuration = null;
-    }
+  configuration: ContestConfiguration | null;
 
-    getUserByName(name: string): User | undefined {
-      return this.users.find((user) => user.name === name);
-    }
+  constructor() {
+    this.users = [];
+    this.configuration = null;
 
-    getUserById(id: string): User | undefined {
-      return this.users.find((user) => user.id === id);
-    }
+    this.createDefaultAdmin();
+  }
+
+  createDefaultAdmin(): void {
+    const user = new User('admin', 'admin');
+    user.admin = true;
+    this.users.push(user);
+  }
+
+  getUserByName(name: string): User | undefined {
+    return this.users.find((user) => user.name === name);
+  }
+
+  getUserById(id: string): User | undefined {
+    return this.users.find((user) => user.id === id);
+  }
 }

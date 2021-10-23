@@ -2,4 +2,13 @@
   <%= title %>
 </h1>
 <p>Welcome to <%= title %>
+
+  <% if (req.user) { %>
+    <p>
+      
+      You are logged in as <%= req.user.name %>.
+    
+      <a href="/logout">Logout</a>
+    </p>
+  <% } %>
 </p>

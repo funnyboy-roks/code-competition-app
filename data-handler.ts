@@ -8,7 +8,7 @@ export let data: AppData;
 
 export const loadData = (): void => {
   if (fs.existsSync(fileName)) {
-    data = JSON.parse(fs.readFileSync(fileName, 'utf8')) as AppData;
+    data = AppData.from(JSON.parse(fs.readFileSync(fileName, 'utf8')));
   } else {
     data = new AppData();
   }

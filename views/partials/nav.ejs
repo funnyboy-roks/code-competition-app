@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">CCA</a>
+        <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <% Object.values(locals.public_pages).forEach(p=> { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= p.href %>">
+                            <%= p.name %>
+                        </a>
+                    </li>
+                    <% }) %>
+                        <% if (req.user) { %>
+
+                            <% if (req.user.admin) { %>
+
+                                <% Object.values(locals.admin_pages).forEach(p=> { %>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<%= p.href %>">
+                                            <%= p.name %>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+                                        <% } else { %>
+                                            <% Object.values(locals.user_pages).forEach(p=> { %>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="<%= p.href %>">
+                                                        <%= p.name %>
+                                                    </a>
+                                                </li>
+                                                <% }) %>
+                                                    <% } %>
+                                                        <% } %>
+            </ul>
+            <% if (title.toLowerCase()!=='login' ) { %>
+
+                <div class="d-flex">
+                    <% if (req.isAuthenticated()) { %>
+                        <a class="btn btn-secondary my-2 my-sm-0" href="/logout">Logout</a>
+                        <% } else { %>
+                            <a class="btn btn-secondary my-2 my-sm-0" href="/login">Login</a>
+                            <% } %>
+                                <% } %>
+                </div>
+        </div>
+</nav>
