@@ -44,7 +44,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
-  res.locals.public_pages = {
+  res.locals.public_pages = { // Pages for any user
     home: {
       name: 'Home',
       href: '/',
@@ -58,9 +58,9 @@ app.use((req, res, next) => {
       href: '/scoreboard',
     },
   };
-  res.locals.admin_pages = {
+  res.locals.admin_pages = { // Pages for admin accounts
     admin: {
-      name: 'Administration',
+      name: 'Admin Panel',
       href: '/admin',
     },
     submissions: {
@@ -72,7 +72,7 @@ app.use((req, res, next) => {
       href: '/admin/users',
     },
   };
-  res.locals.user_pages = {
+  res.locals.user_pages = { // Pages for logged in users
     profile: {
       name: 'Profile',
       href: '/profile',
@@ -91,14 +91,6 @@ app.use('/', require('./routes/users'));
 app.use('/admin', ensureAuthenticated, ensureAdmin, require('./routes/admin'));
 
 app.all('*', (req: express.Request, res: express.Response) => {
-  // res.status(404).send({
-  //   message: 'Page not found',
-  //   title: '404 Error',
-  //   error: {
-  //     status: 404,
-  //     stack: '🥞',
-  //   },
-  // });
   res.status(404).render('error', {
     title: '404 Error',
     error: {

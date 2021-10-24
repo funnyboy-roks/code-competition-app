@@ -1,7 +1,15 @@
-<% if (data.configuration.name !=='') { %>
+<% if (data.configuration.name !=='' ) { %>
     <!-- Configuration has been created -->
-    <h1>Competition</h1>
-    <hr>
+
+    <div class="row align-items-center w-75 mx-auto">
+        <div class="col">
+            <h1>Competition</h1>
+        </div>
+        <div class="col text-end">
+            <a href="/admin/config" class="btn btn-primary">Configure Competition</a>
+        </div>
+        <hr>
+    </div>
     <% if (req.query.mode==='edit' ) { %>
         <div class="row mt-5">
             <div class="col-md-6 m-auto">
@@ -14,7 +22,8 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">Description</span>
-                            <textarea name="description" type="text" class="form-control"><%= data.configuration.description %></textarea>
+                            <textarea name="description" type="text"
+                                class="form-control"><%= data.configuration.description %></textarea>
                         </div>
                         <button class="btn btn-primary" type="submit">Save</button>
                     </fieldset>
@@ -23,16 +32,18 @@
         </div>
 
         <% } else { %>
+            <div class="w-75 mx-auto mx-4">
 
-            <div class="mx-4 px-3" style="border-left: 3px solid lightgrey;">
-                <h1>
-                    <%= data.configuration.name %>
-                </h1>
-                <p class="mb-0">
-                    <%- marked(data.configuration.description) %>
-                </p>
+                <div class="px-3" style="border-left: 3px solid lightgrey; border-radius: 3px;">
+                    <h1>
+                        <%= data.configuration.name %>
+                    </h1>
+                    <p class="mb-0">
+                        <%- marked(data.configuration.description) %>
+                    </p>
+                </div>
+                <a href="/admin?mode=edit" class="btn btn-light mx-1"><i class="fas fa-pencil-alt"></i> Edit</a>
             </div>
-            <a href="/admin?mode=edit" class="btn btn-light"><i class="fas fa-pencil-alt"></i> Edit</a>
             <% } %>
 
                 <% } else { %>

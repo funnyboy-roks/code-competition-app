@@ -12,7 +12,8 @@
 	},
 	"plugins": ["@typescript-eslint"],
 	"rules": {
-		"import/extensions": ["error", "never"]
+		"import/extensions": ["error", "never"],
+		"no-console": "off"
 	},
 	"settings": {
 		"import/resolver": {
