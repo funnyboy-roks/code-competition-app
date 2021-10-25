@@ -13,13 +13,16 @@ export const ensureAuthenticated = (
   return res.redirect(`/login?dest=${dest}`);
 };
 
-export const ensureAdmin = (
-  req: express.Request,
-  res: express.Response,
-  next: Function,
-) => {
+export const ensureAdmin = (req: express.Request, res: express.Response, next: Function) => {
   if (req.isAuthenticated() && (req.user as User).admin) {
     return next();
   }
   return res.redirect('/');
+};
+
+export const signedInRedirect = (redirect: string = '/') => (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  if (req.isAuthenticated()) {
+    return res.redirect(redirect);
+  }
+  return next();
 };

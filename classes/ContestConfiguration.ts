@@ -4,6 +4,7 @@ export type ContestState = 'started' | 'stopped';
 
 export default class ContestConfiguration {
   static from(configuration: any): any {
+    if (configuration === null) return null;
     return Object.assign(new ContestConfiguration('', ''), configuration);
   }
 
@@ -11,7 +12,11 @@ export default class ContestConfiguration {
 
   description: string;
 
+  date: Date | null;
+
   startTime: Date | null;
+
+  endTime: Date | null;
 
   duration: number;
 
@@ -19,13 +24,18 @@ export default class ContestConfiguration {
 
   state: ContestState;
 
+  shuffleQuestions: boolean;
+
   constructor(name: string, description: string) {
     this.name = name;
     this.description = description;
+    this.date = null;
     this.startTime = null;
+    this.endTime = null;
     this.duration = 0;
     this.problems = [];
     this.state = 'stopped';
+    this.shuffleQuestions = false;
   }
 
   update(values: any) {
@@ -39,6 +49,14 @@ export default class ContestConfiguration {
 
     if (values.startTime) {
       this.startTime = values.startTime;
+    }
+
+    if (values.endTime) {
+      this.endTime = values.endTime;
+    }
+
+    if (values.date) {
+      this.date = values.date;
     }
 
     if (values.duration) {

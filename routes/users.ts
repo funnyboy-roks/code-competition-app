@@ -1,10 +1,11 @@
 import express from 'express';
 import passport from 'passport';
+import { signedInRedirect } from '../auth';
 
 const router = express.Router();
 
 // /login
-router.get('/login', (req, res) => {
+router.get('/login', signedInRedirect('/'), (req, res) => {
   res.render('login', { title: 'Login', req });
 });
 

@@ -1,7 +1,9 @@
 import fs from 'fs';
+import path from 'path';
 import AppData from './classes/AppData';
 
-const fileName = './data/data.json';
+const filePath = ['data', 'data.json'];
+const fileName = path.join(...filePath);
 
 // eslint-disable-next-line import/no-mutable-exports
 export let data: AppData;
@@ -15,6 +17,9 @@ export const loadData = (): void => {
 };
 
 export const saveData = (): void => {
+  if (!fs.existsSync(filePath[0])) {
+    fs.mkdirSync(filePath[0]);
+  }
   fs.writeFileSync(fileName, JSON.stringify(data));
 };
 

@@ -6,7 +6,7 @@ export type Test = {
 export default class Problem {
     prompt: string; // MD
 
-    test: Test;
+    test: Test | null;
 
     tests: Test[];
 

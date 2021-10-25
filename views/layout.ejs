@@ -21,7 +21,14 @@
             <%- body %>
         </div>
 
+        <% if(typeof scripts !== 'undefined') { %>
+            <% scripts.forEach(function(script) { %>
+                <script src="<%= script %>"></script>
+            <% }) %>
+        <% } %>
+
         <script src="/javascript/highlight-tab.js"></script>
+        <script src="/javascript/main.js"></script>
 </body>
 
 </html>

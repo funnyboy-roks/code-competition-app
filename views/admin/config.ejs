@@ -1,0 +1,77 @@
+<form action="/admin/update-config" method="post" id="edit-config-form">
+
+    <table class="table table-hover">
+        <thead class="table table-hover">
+            <tr>
+                <th scope="col">
+                    <h3>Name</h3>
+                </th>
+                <th scope="col">
+
+                    <div class="row">
+                        <div class="col ms-1">
+                            <h3>Value</h3>
+                        </div>
+                        <% if (req.query.mode !=='edit' ) { %>
+                            <div class="col text-end">
+                                <a href="/admin/config?mode=edit" class="btn btn-primary">Edit Configuration</a>
+                            </div>
+                            <% } else { %>
+                                <div class="col text-end">
+                                    <a href="/admin/config" class="btn btn-secondary confirm-redirect">Cancel</a>
+                                </div>
+                                <% } %>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <h4>
+                        Name
+                    </h4>
+                </th>
+                <td>
+                    <input class="w-100 form-control px-3" type="text" name="name"
+                        value="<%= data.configuration.name %>">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <h4>
+                        Date
+                    </h4>
+                </th>
+                <td>
+                    <input class="w-100 form-control px-3" type="date" name="date"
+                        value="<%= data.configuration.date %>">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <h4>
+                        Start Time
+                    </h4>
+                </th>
+                <td>
+                    <input class="w-100 form-control px-3" type="time" name="startTime"
+                        value="<%= data.configuration.startTime %>">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <h4>End Time</h4>
+                </th>
+                <td>
+                    <input class="w-100 form-control px-3" type="time" name="endTime"
+                        value="<%= data.configuration.endTime %>">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <button type="submit" class="btn btn-primary" id="submit">Save</button>
+</form>

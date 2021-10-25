@@ -1,0 +1,17 @@
+<% data.configuration.problems.forEach((problem, index)=> { %>
+
+    <div class="problem">
+        <div>
+            <%- marked(problem.prompt) %>
+        </div>
+        <div class="problem-edit">
+            <a href="/admin/problems/<%= index %>/edit">Edit</a>
+        </div>
+        <div class="problem-delete">
+            <a href="/admin/problems/<%= index %>/delete"><i class="far fa-trash-alt"> Delete</i></a>
+        </div>
+
+        <br>
+    </div>
+
+    <% }) %>

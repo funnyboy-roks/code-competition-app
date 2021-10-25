@@ -3,10 +3,6 @@ import marked from 'marked';
 import ContestConfiguration from '../classes/ContestConfiguration';
 import { data, saveData } from '../data-handler';
 
-// Set options
-// `highlight` example uses https://highlightjs.org
-marked.setOptions({ renderer: new marked.Renderer() });
-
 const router = express.Router();
 
 // /admin/
@@ -19,8 +15,41 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/create-users/', (req, res) => {
-  res.send('Create Users');
+// /admin/config
+router.get('/config', (req, res) => {
+  res.render('admin/config', {
+    title: 'Admin Panel',
+    req,
+    data,
+    marked,
+    scripts: ['/javascript/edit-config.js'],
+  });
+});
+
+// /admin/problems
+router.get('/problems', (req, res) => {
+  res.render('admin/problems', {
+    title: 'Admin Panel',
+    req,
+    data,
+    marked,
+  });
+});
+
+// /admin/problem/:id/edit
+router.get('/problem/:id/edit', (req, res) => {
+  res.render('admin/problem/edit', {
+    title: 'Admin Panel',
+    req,
+    data,
+    marked,
+  });
+});
+
+// /admin/problems
+router.get('/problem/:id/delete', (req, res) => {
+  // res.flash('success', 'Problem deleted');
+  res.redirect('/admin/problems');
 });
 
 router.post('/create-competition/', (req, res) => {
